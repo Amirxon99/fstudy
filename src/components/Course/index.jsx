@@ -2,11 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 function CourseCard({ styles, data }) {
   const navigate = useNavigate();
-
-  function course() {
-    let isLogin = localStorage.getItem("login");
-
-    navigate(isLogin ? "course" : "login");
+  
+  function course(id) {
+    let isLogin = localStorage.getItem("login");    
+    navigate(isLogin ? `course/${id}` : "login");
   }
 
   return (
@@ -30,7 +29,7 @@ function CourseCard({ styles, data }) {
           <span className={styles.metaViews}>👁 {data?.viewer}</span>
         </div>
 
-        <button onClick={() => course()} className={styles.viewButton}>
+        <button onClick={() => course(data.id)} className={styles.viewButton}>
           Kursni ko'rish
         </button>
       </div>

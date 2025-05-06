@@ -8,7 +8,7 @@ function Root() {
     <>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/course" element={<CoursePage/>} />
+        <Route path="/course/:id" element={<CoursePage/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="*" element={<>Not Found</>} />
       </Routes>
