@@ -1,6 +1,6 @@
 import styles from "./header.module.css";
 import logo from "../../assets/img/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Header() {
@@ -54,9 +54,10 @@ function Header() {
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection("stats")} className={styles.navBtn}>
+              {/* <button onClick={() => scrollToSection("stats")} className={styles.navBtn}>
                 Testlar
-              </button>
+              </button> */}
+              <Link to="/tests">Testlar</Link>
             </li>
             <li>
               <button onClick={() => scrollToSection("reviews")} className={styles.navBtn}>
