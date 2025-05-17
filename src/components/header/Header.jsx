@@ -30,8 +30,10 @@ function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logoBox}>
-          <img src={logo} alt="EduPlatform logo" className={styles.logo} />
+          <Link to="/" className={styles.headerLink}>
+           <img src={logo} alt="EduPlatform logo" className={styles.logo} />
           <span className={styles.logoText}>Fluent Study</span>
+          </Link>
         </div>
 
         <button
@@ -44,9 +46,8 @@ function Header() {
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
           <ul>
             <li>
-              <button onClick={() => scrollToSection("hero")} className={styles.navBtn}>
-                Bosh Sahifa
-              </button>
+              <Link to="/">Bosh Sahifa</Link>
+             
             </li>
             <li>
               <button onClick={() => scrollToSection("courses")} className={styles.navBtn}>
