@@ -6,7 +6,7 @@ import { useState } from "react";
 function Header() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false); // Menu holatini boshqarish uchun
-  const isLogin = localStorage.getItem("login");
+  const isLogin = JSON.parse(localStorage.getItem("user"))?true:false;
 
   const login = () => {
     localStorage.setItem("login", "true");
@@ -14,7 +14,7 @@ function Header() {
   };
 
   const logout = () => {
-    localStorage.removeItem("login");
+    localStorage.removeItem("user");
     navigate("/");
   };
 
