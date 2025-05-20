@@ -9,18 +9,14 @@ function Login() {
 
   async function check(e) {
     e.preventDefault();
-
     if (username.trim().length < 1 || password.trim().length < 1) {
       alert("Username va Parol kiriting!!");
       return;
     }
-
     try {
       const res = await fetch(`https://6825bb6d0f0188d7e72e379f.mockapi.io/users`);
       const users = await res.json();
-
       const user = users.find(u => u.username === username);
-
       if (user && user.password === password) {
         localStorage.setItem("user", JSON.stringify(user));
         navigate("/");
@@ -32,7 +28,6 @@ function Login() {
       alert("Ma'lumotlarni olishda xatolik yuz berdi.");
     }
   }
-
   return (
     <div className={styles.login}>
       <div className={styles.loginBox}>

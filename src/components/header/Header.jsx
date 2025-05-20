@@ -9,7 +9,6 @@ function Header() {
   const isLogin = JSON.parse(localStorage.getItem("user"))?true:false;
 
   const login = () => {
-    localStorage.setItem("login", "true");
     navigate("/login");
   };
 

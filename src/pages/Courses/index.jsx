@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import styles from "./course.module.css";
@@ -6,9 +6,14 @@ import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 
 function CoursePage() {
+  const navigate=useNavigate()
   const { id } = useParams();
   const [course, setCourse] = useState(null);
   const [activeVideo, setActiveVideo] = useState("");
+  const user=JSON.parse(localStorage.getItem("user"));
+  if(!user){
+    navigate("/login")
+  }
 
   useEffect(() => {
     fetch(`https://6815e18a32debfe95dbcb148.mockapi.io/fstudy/courses/${id}`)
