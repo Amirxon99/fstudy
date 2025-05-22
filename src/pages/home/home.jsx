@@ -4,16 +4,26 @@ import Footer from "../../components/footer/Footer";
 import logo2 from "../../assets/img/logo2.png";
 import Course from "../../components/Course";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("https://6815e18a32debfe95dbcb148.mockapi.io/fstudy/courses")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
-
+  
+  const user =JSON.parse(localStorage.getItem("user"))
+  function checkuser() {
+    if(user){
+        navigate("/courses")
+    }else{
+      navigate("/login")
+    }
+  }
 
   
   return (
@@ -30,47 +40,22 @@ function Home() {
               Zamonaviy kurslar va interaktiv testlar orqali o'z bilimingizni
               yangi bosqichga ko'taring
             </p>
-            <button className={styles.ctaBtn}>
+            <button className={styles.ctaBtn} onClick={checkuser}>
               Kurslarni ko'rish <span>→</span>
             </button>
           </div>
-
+          
           <div className={styles.heroRight}>
             <img src={logo2} alt="Hero rasm" />
           </div>
         </div>
       </div>
 
-      <div className={styles.container}>
-        <div className={styles.courseFilters}>
-          <div className={styles.searchBox}>
-            <input type="text" placeholder="Kurslarni qidirish..." />
-            <span className={styles.searchIcon}>🔍</span>
-          </div>
-
-          <div className={styles.categoryBox}>
-            <select defaultValue="">
-              <option value="" disabled>
-                Kategoriya
-              </option>
-              <option value="dasturlash">Dasturlash</option>
-              <option value="dizayn">Dizayn</option>
-              <option value="marketing">Marketing</option>
-            </select>
-          </div>
-
-         
-        </div>
-      </div>
+      
 
       <div className={styles.container} id="courses">
         <h2 className={styles.title}>Kurslar</h2>
-        <div className={styles.tabs}>
-          <button className={`${styles.tab} ${styles.activeTab}`}>
-            Mashhur kurslar
-          </button>
-          <button className={styles.tab}>Yangi kurslar</button>
-        </div>
+       
         <div className={styles.grid}>
           {data?.map((item) => (
             <Course key={item?.id} styles={styles} data={item} />

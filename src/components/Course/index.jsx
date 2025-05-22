@@ -5,7 +5,7 @@ function CourseCard({ styles, data }) {
   
   function course(id) {
     let isLogin = localStorage.getItem("login");    
-    navigate(isLogin ? `course/${id}` : "login");
+    navigate(isLogin ? `/course/${id}` : "login");
   }
 
   return (

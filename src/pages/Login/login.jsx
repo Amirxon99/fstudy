@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   async function check(e) {
     e.preventDefault();
@@ -14,9 +15,11 @@ function Login() {
       return;
     }
     try {
-      const res = await fetch(`https://6825bb6d0f0188d7e72e379f.mockapi.io/users`);
+      const res = await fetch(
+        `https://6825bb6d0f0188d7e72e379f.mockapi.io/users`
+      );
       const users = await res.json();
-      const user = users.find(u => u.username === username);
+      const user = users.find((u) => u.username === username);
       if (user && user.password === password) {
         localStorage.setItem("user", JSON.stringify(user));
         navigate("/");
@@ -31,6 +34,11 @@ function Login() {
   return (
     <div className={styles.login}>
       <div className={styles.loginBox}>
+        <Link to="/">
+          <button className={styles.backbtn}>
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </Link>
         <form className={styles.form}>
           <h2>Kirish</h2>
           <p>Xush kelibsiz!</p>

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./register.module.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Register() {
      const navigate=useNavigate();
@@ -56,6 +57,11 @@ function Register() {
   return (
     <div className={styles.login}>
       <div className={styles.loginBox}>
+        <Link to="/">
+                  <button className={styles.backbtn}>
+                    <i class="fa-solid fa-arrow-left"></i>
+                  </button>
+                </Link>
         <div className="loginImg">
           <img src="https://account.asus.com/img/login_img02.png" alt="sdf" />
         </div>

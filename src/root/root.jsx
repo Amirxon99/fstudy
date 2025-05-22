@@ -6,6 +6,7 @@ import TestPage from "../pages/test/Test";
 import SolveTest from "../pages/solveTest/SolveTest";
 import ChatOverlay from "../AI/ChatOverlay";
 import Register from "../pages/register/Register";
+import Coursehome from "../pages/coursehome/Coursehome";
 
 function Root() {
   return (
@@ -14,6 +15,7 @@ function Root() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/course/:id" element={<CoursePage/>} />
+        <Route path="/courses" element={<Coursehome/>} />
         <Route path="/tests" element={<TestPage/>} />
         <Route path="/solve-test/:id" element={<SolveTest/>} />
         <Route path="/login" element={<LoginPage/>} />

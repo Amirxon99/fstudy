@@ -39,6 +39,7 @@
     align-items: center;
     justify-content: center;
     gap: 40px;
+    position: relative;
 }
 .form{
     display: flex;
@@ -69,4 +70,18 @@
     background-color: #024a92;
     color: white;
     font-size: 18px;
+}
+.backbtn{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #003366;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.backbtn:hover{
+    background-color: #0066cc;
+    transition: 0.4s;
 }
