@@ -9,7 +9,7 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Typography
+  Typography,
 } from "@mui/material";
 
 function SolveTest() {
@@ -33,7 +33,7 @@ function SolveTest() {
       });
   }, [id]);
   console.log(test);
-  
+
   // Taymer
   useEffect(() => {
     if (timeLeft === null || isFinished) return;
@@ -71,7 +71,9 @@ function SolveTest() {
           correct++;
         }
       });
-      const calculatedScore = Math.round((correct / test.questions.length) * 100);
+      const calculatedScore = Math.round(
+        (correct / test.questions.length) * 100
+      );
       setScore(calculatedScore);
     }
 
@@ -80,12 +82,15 @@ function SolveTest() {
 
   const handleCloseModal = () => {
     setOpenModal(false);
-    navigate("/result");
+    navigate("/tests");
   };
 
   if (!test) return <div className={styles.loading}>Yuklanmoqda...</div>;
 
-  const progress = ((timeLeft / (test.questions.length * 2 * 60)) * 100).toFixed(0);
+  const progress = (
+    (timeLeft / (test.questions.length * 2 * 60)) *
+    100
+  ).toFixed(0);
 
   return (
     <div>
@@ -97,7 +102,10 @@ function SolveTest() {
             Qolgan vaqt: <span>{formatTime(timeLeft)}</span>
           </div>
           <div className={styles.progressBar}>
-            <div className={styles.progress} style={{ width: `${progress}%` }}></div>
+            <div
+              className={styles.progress}
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         </div>
 
@@ -140,16 +148,48 @@ function SolveTest() {
       <Footer />
 
       {/* Modal (Natijani ko‘rsatadi) */}
-      <Dialog open={openModal} onClose={handleCloseModal}>
-        <DialogTitle>Test Yakunlandi</DialogTitle>
-        <DialogContent>
-          <Typography variant="body1">
-            Sizning bahoyingiz: <strong>{score} / 100</strong>
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle
+          sx={{ textAlign: "center", fontSize: "24px", fontWeight: 600, mt: 2 }}
+        >
+          🎉 Tabriklaymiz!
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: "center", py: 3 }}>
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Siz testni yakunladingiz
           </Typography>
+          <Typography variant="body1" sx={{ fontSize: "18px", mb: 3 }}>
+            Sizning natijangiz:{" "}
+            <strong style={{ fontSize: "22px" }}>{score} / 100</strong>
+          </Typography>
+
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png"
+            alt="congrats"
+            style={{ width: "80px", marginBottom: "20px" }}
+          />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseModal} variant="contained" color="primary">
-            OK
+        <DialogActions sx={{ justifyContent: "center", pb: 3 }}>
+          <Button
+            onClick={() => navigate("/")}
+            variant="outlined"
+            color="secondary"
+            sx={{ borderRadius: "20px", px: 4 }}
+          >
+            Ortga qaytish
+          </Button>
+          <Button
+            onClick={() => navigate(`/certificate?score=${score}&title=${encodeURIComponent(test.title)}`)}
+            variant="contained"
+            color="primary"
+            sx={{ borderRadius: "20px", px: 4 }}
+          >
+            Sertifikatni olish
           </Button>
         </DialogActions>
       </Dialog>

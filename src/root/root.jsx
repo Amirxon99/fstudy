@@ -7,6 +7,7 @@ import SolveTest from "../pages/solveTest/SolveTest";
 import ChatOverlay from "../AI/ChatOverlay";
 import Register from "../pages/register/Register";
 import Coursehome from "../pages/coursehome/Coursehome";
+import CertificatePage from "../pages/certificatePage/certificatePage";
 
 function Root() {
   return (
@@ -20,6 +21,7 @@ function Root() {
         <Route path="/solve-test/:id" element={<SolveTest/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/certificate" element={<CertificatePage/>} />
         <Route path="*" element={<>Not Found</>} />
       </Routes>
       
