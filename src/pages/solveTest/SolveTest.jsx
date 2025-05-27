@@ -183,7 +183,7 @@ function SolveTest() {
           >
             Ortga qaytish
           </Button>
-          <Button
+           { score>80 && <Button
             onClick={() => navigate(`/certificate?score=${score}&title=${encodeURIComponent(test.title)}`)}
             variant="contained"
             color="primary"
@@ -191,6 +191,10 @@ function SolveTest() {
           >
             Sertifikatni olish
           </Button>
+             
+           }
+            
+         
         </DialogActions>
       </Dialog>
     </div>

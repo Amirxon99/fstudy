@@ -4,9 +4,14 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import styles from "./test.module.css";
 
+
 function Test() {
   const [testlar, setTestlar] = useState([]);
   const navigate = useNavigate();
+    const user=JSON.parse(localStorage.getItem("user"));
+  if(!user){
+    navigate("/login")
+  }
 
   useEffect(() => {
     fetch(`https://6815e18a32debfe95dbcb148.mockapi.io/fstudy/tests`)

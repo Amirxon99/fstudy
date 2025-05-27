@@ -13,18 +13,15 @@ const CertificatePage = () => {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    // Foydalanuvchini localStorage dan olish
     const userData = JSON.parse(localStorage.getItem("user"));
     if (userData) {
       setUser({ name: userData.name, lastName: userData.lastname });
     }
 
-    // URL querydan score va title olish
     const query = new URLSearchParams(location.search);
     setScore(query.get("score"));
     setTitle(query.get("title"));
 
-    // Sana
     const today = new Date();
     const formattedDate = today.toLocaleDateString("uz-UZ", {
       year: "numeric",
@@ -38,7 +35,7 @@ const CertificatePage = () => {
     const input = document.getElementById("certificate");
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("landscape", "pt", "a4");
+      const pdf = new jsPDF("portrait", "pt", "a4");
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
@@ -48,7 +45,7 @@ const CertificatePage = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <div
         style={{
           padding: "30px",
@@ -60,43 +57,53 @@ const CertificatePage = () => {
         <div
           id="certificate"
           style={{
-            width: "1123px",
-            height: "794px",
+            width: "794px",
+            height: "1123px",
             margin: "40px auto",
-            padding: "60px",
+            padding: "100px 60px",
             border: "12px solid #004080",
-            background: "linear-gradient(to bottom right, #fdfdfd, #e0eaff)",
+            // background: "linear-gradient(to bottom right, #fdfdfd, #e0eaff)",
+            background:
+              "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(./bgsertificate.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
             boxShadow: "0 0 15px rgba(0,0,0,0.2)",
-            color: "#003366",
+            color: "white",
             position: "relative",
+            filter: "grayscale(10px)",
           }}
         >
-          <h1 style={{ fontSize: "40px", marginBottom: "10px" }}>SERTIFIKAT</h1>
-          <p style={{ fontSize: "18px" }}>
+          <h1 style={{ fontSize: "66px", marginBottom: "80px",marginTop:"150px" }}>SERTIFIKAT</h1>
+          <p style={{ fontSize: "24px" }}>
             Ushbu sertifikat quyidagi shaxsga beriladi:
           </p>
           <h2
-            style={{ fontSize: "30px", margin: "20px 0", fontWeight: "bold" }}
+            style={{ fontSize: "40px", margin: "20px 0", fontWeight: "bold" }}
           >
             {user.name} {user.lastName}
           </h2>
-          <p style={{ fontSize: "18px" }}>
+          <p style={{ fontSize: "24px" }}>
             <strong>"{title}"</strong> nomli testni muvaffaqiyatli yakunlagani
             uchun.
           </p>
-          <p style={{ fontSize: "20px", margin: "20px 0" }}>
+          <p style={{ fontSize: "24px", margin: "20px 0" }}>
             Baho: <strong>{score} / 100</strong>
           </p>
-          <p style={{ fontSize: "16px" }}>Berilgan sana: {date}</p>
+          <p style={{ fontSize: "22px",position:"absolute",bottom: "100px",}}>Berilgan sana: {date}</p>
 
-          <div style={{ position: "absolute", bottom: "60px", left: "60px" }}>
-            <p>______________________</p>
-            <p>O‘qituvchi</p>
-          </div>
-          <div style={{ position: "absolute", bottom: "60px", right: "60px" }}>
-            <p>______________________</p>
-            <p>Direktor</p>
-          </div>
+          {/* Muhr rasmi */}
+          <img
+            src="./stamp2.png"
+            alt="Fstudy Stamp"
+            style={{
+              position: "absolute",
+              transform: "rotate(-25deg)",
+              bottom: "50px",
+              right: "50px",
+              width: "140px",
+              opacity: 0.8,
+            }}
+          />
         </div>
 
         <button
@@ -114,7 +121,7 @@ const CertificatePage = () => {
           PDF Yuklab olish
         </button>
       </div>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
