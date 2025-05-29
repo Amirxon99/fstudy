@@ -85,3 +85,10 @@
     background-color: #0066cc;
     transition: 0.4s;
 }
+
+
+@media(max-width:768px){
+    .loginImg img{
+        display: none;
+    }
+}

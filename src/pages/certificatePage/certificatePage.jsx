@@ -4,7 +4,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-
+import styles from "./certificate.module.css"
 const CertificatePage = () => {
   const location = useLocation();
   const [user, setUser] = useState({ firstName: "", lastName: "" });
@@ -56,53 +56,31 @@ const CertificatePage = () => {
         <h2>Sertifikat Sahifasi</h2>
         <div
           id="certificate"
-          style={{
-            width: "794px",
-            height: "1123px",
-            margin: "40px auto",
-            padding: "100px 60px",
-            border: "12px solid #004080",
-            // background: "linear-gradient(to bottom right, #fdfdfd, #e0eaff)",
-            background:
-              "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(./bgsertificate.jpg)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            boxShadow: "0 0 15px rgba(0,0,0,0.2)",
-            color: "white",
-            position: "relative",
-            filter: "grayscale(10px)",
-          }}
+          className={styles.certificate}
         >
-          <h1 style={{ fontSize: "66px", marginBottom: "80px",marginTop:"150px" }}>SERTIFIKAT</h1>
-          <p style={{ fontSize: "24px" }}>
+          <h1 className={styles.title} >SERTIFIKAT</h1>
+          <p>
             Ushbu sertifikat quyidagi shaxsga beriladi:
           </p>
           <h2
-            style={{ fontSize: "40px", margin: "20px 0", fontWeight: "bold" }}
+            className={styles.h2}
           >
             {user.name} {user.lastName}
           </h2>
-          <p style={{ fontSize: "24px" }}>
+          <p>
             <strong>"{title}"</strong> nomli testni muvaffaqiyatli yakunlagani
             uchun.
           </p>
-          <p style={{ fontSize: "24px", margin: "20px 0" }}>
+          <p >
             Baho: <strong>{score} / 100</strong>
           </p>
-          <p style={{ fontSize: "22px",position:"absolute",bottom: "100px",}}>Berilgan sana: {date}</p>
+          <p className={styles.sana}>Berilgan sana: {date}</p>
 
           {/* Muhr rasmi */}
           <img
             src="./stamp2.png"
             alt="Fstudy Stamp"
-            style={{
-              position: "absolute",
-              transform: "rotate(-25deg)",
-              bottom: "50px",
-              right: "50px",
-              width: "140px",
-              opacity: 0.8,
-            }}
+            className={styles.stamp}
           />
         </div>
 

@@ -65,7 +65,7 @@ function Login() {
             Akkount yo'qmi? <a href="/register">Ro'yxatdan o'tish</a>
           </p>
         </form>
-        <div className="loginImg">
+        <div className={styles.loginImg}>
           <img src="https://account.asus.com/img/login_img02.png" alt="login" />
         </div>
       </div>

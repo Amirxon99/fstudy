@@ -62,7 +62,7 @@ function Register() {
                     <i class="fa-solid fa-arrow-left"></i>
                   </button>
                 </Link>
-        <div className="loginImg">
+        <div className={styles.loginImg}>
           <img src="https://account.asus.com/img/login_img02.png" alt="sdf" />
         </div>
         <form action="" className={styles.form}>
