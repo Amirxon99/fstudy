@@ -25,7 +25,7 @@ function Coursehome() {
       <Header></Header>
     
 
-      <div className={styles.container}>
+      <div className={styles.container2}>
         <div className={styles.courseFilters}>
           <div className={styles.searchBox}>
             <input type="text" placeholder="Kurslarni qidirish..." />

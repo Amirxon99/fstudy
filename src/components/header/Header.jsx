@@ -5,8 +5,8 @@ import { useState } from "react";
 
 function Header() {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false); // Menu holatini boshqarish uchun
-  const isLogin = JSON.parse(localStorage.getItem("user"))?true:false;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isLogin = JSON.parse(localStorage.getItem("user")) ? true : false;
 
   const login = () => {
     navigate("/login");
@@ -30,8 +30,8 @@ function Header() {
       <div className={styles.container}>
         <div className={styles.logoBox}>
           <Link to="/" className={styles.headerLink}>
-           <img src={logo} alt="EduPlatform logo" className={styles.logo} />
-          <span className={styles.logoText}>Fluent Study</span>
+            <img src={logo} alt="EduPlatform logo" className={styles.logo} />
+            <span className={styles.logoText}>Fluent Study</span>
           </Link>
         </div>
 
@@ -46,12 +46,9 @@ function Header() {
           <ul>
             <li>
               <Link to="/">Bosh Sahifa</Link>
-             
             </li>
             <li>
-              <button onClick={() => scrollToSection("courses")} className={styles.navBtn}>
-                Kurslar
-              </button>
+                <Link to="/courses">Kurslar</Link>
             </li>
             <li>
               {/* <button onClick={() => scrollToSection("stats")} className={styles.navBtn}>
@@ -60,12 +57,10 @@ function Header() {
               <Link to="/tests">Testlar</Link>
             </li>
             <li>
-              <button onClick={() => scrollToSection("reviews")} className={styles.navBtn}>
-                Blog
-              </button>
+              <Link to="/blogs">Blog</Link>
             </li>
             <li>
-              <a href="/">Biz haqimizda</a>
+               <Link to="/about-us">Biz haqimizda</Link>
             </li>
           </ul>
 

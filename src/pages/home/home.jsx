@@ -46,7 +46,7 @@ function Home() {
           </div>
           
           <div className={styles.heroRight}>
-            <img src={logo2} alt="Hero rasm" />
+            <img src="./heroimg.png" alt="Hero rasm" />
           </div>
         </div>
       </div>

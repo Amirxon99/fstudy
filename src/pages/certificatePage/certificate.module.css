@@ -47,6 +47,11 @@
     padding: 30px 15px;
     padding-top: 40px;
     height: 500px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+    url("./bgsertificate.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
   .title {
     font-size: 28px;
